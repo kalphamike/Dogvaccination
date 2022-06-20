@@ -249,13 +249,24 @@ private GeneralDao<Disease> disDao = new GeneralDao<>(Disease.class);
    public String ULogin(){
         try {
            String enterusernameMail=au.getUserMail();
+          // String enteruserPass=au.getPassword();
+           String usertype=mn.getUserType();
            
        Actor ab = mnDao.findBySTRING_PK(enterusernameMail);
-       
+      // Actor pass = mnDao.findBySTRING_PK(enteruserPass);
+       Actor typ = mnDao.findBySTRING_PK(usertype);
         String actorUsername = ab.getUserEmail();
+        //String actorPass = pass.getUserPassword();
         
-        if ( enterusernameMail.equals(actorUsername)) {
-             return "Home"; 
+        String ty= "vet";
+        if ( enterusernameMail.equals(actorUsername) )  {
+           
+            if (ab.getUserType().equals(ty)) {
+                return "vet";
+            }else {
+            return "dogowner";
+            }
+             
         } else {
             return "Wrong passowrd or Username ";
         }
