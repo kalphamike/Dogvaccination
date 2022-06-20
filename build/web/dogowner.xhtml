@@ -422,7 +422,7 @@ input[type=text]:placeholder {
                                </f:facet>
                                 <h:form>
                                     <h:commandButton value="Remove Dog" action="#{Main.deletedog(item)}"/>
-                                    <h:commandButton value="update" action="#{Main.deletedog(item)}"/>
+                                    <h:commandButton value="update" action="#{Main.updatedog(item)}"/>
                                     
                                 </h:form>
                            </h:column>
@@ -445,7 +445,7 @@ input[type=text]:placeholder {
     <h2 class="active"> Adding New Dog </h2>
    
 
-    <!-- Login Form -->
+    <!-- add dog  -->
     <h:form>
             <div class="contact_form-container w-full ">
               <div>
@@ -474,7 +474,10 @@ input[type=text]:placeholder {
                     <center>
                          <div >
                              <center>
-                                 <div> <h:commandButton value="Add New Dog" action="#{Main.createdog()}"/></div>
+                                 
+                                  <h:inputHidden value="#{Main.action}"/>
+                                    <h:commandButton value="#{Main.action}" action="#{Main.dogupdating()}"/>
+                                    
                              </center>
                          </div>
                     </center>

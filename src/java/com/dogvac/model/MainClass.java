@@ -31,7 +31,7 @@ public class MainClass {
 private Actor mn  = new Actor();
 private GeneralDao<Actor> mnDao = new GeneralDao<>(Actor.class);
 private auth au = new auth();
-
+private String action ="create";
 //Nicole
 
 
@@ -42,6 +42,17 @@ private GeneralDao<Vaccination> vacDao = new GeneralDao<>(Vaccination.class);
 private Disease dis = new Disease();
 private GeneralDao<Disease> disDao = new GeneralDao<>(Disease.class);
  //
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+
+   
+
 
     public Actor getMn() {
         return mn;
@@ -131,11 +142,9 @@ private GeneralDao<Disease> disDao = new GeneralDao<>(Disease.class);
      }
       public String createdog(){
         try{
-     dogDao.create(dog);
-      dog.setDogId("");
-      dog.setDogDob("");
-      dog.setDogNames("");
-      dog.setDogId("");
+            
+            this.action="create";
+     
      return "dogowner";
         }
 
@@ -146,8 +155,9 @@ private GeneralDao<Disease> disDao = new GeneralDao<>(Disease.class);
 
      }
 
-       public String updatedisease(){
+       public String updatedisease( ){
         try{
+           
      disDao.update(dis);
 
      return "Dog";
@@ -173,9 +183,11 @@ private GeneralDao<Disease> disDao = new GeneralDao<>(Disease.class);
         }
 
      }
-      public String updatedog(){
+      public String updatedog(Dog dg){
         try{
-     dogDao.update(dog);
+            this.dog=dg;
+            this.action="Update";
+     
 
      return "dogowner";
         }
@@ -254,7 +266,37 @@ private GeneralDao<Disease> disDao = new GeneralDao<>(Disease.class);
        }
     }
     
-  
+   public String dogupdating(){
+        try {
+            if(action.equals("create")){
+                
+                 dogDao.create(dog);
+                     dog.setDogId("");
+                    dog.setDogDob("");
+                    dog.setDogNames("");
+                     dog.setDogId("");
+            
+            }if (action.equals("Update")) {
+             
+                dogDao.update(dog);
+                 dog.setDogId("");
+                    dog.setDogDob("");
+                    dog.setDogNames("");
+                     dog.setDogId("");
+            } 
+            
+            
+             return "dogowner";
+        } catch (Exception e) {
+           FacesMessage message = new FacesMessage("Fail to save , maybe you are trying to save an existing ID");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+           return "dogowner"; 
+            
+        }
+    
+    
+    
+    }
     
    
 }
