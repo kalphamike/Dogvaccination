@@ -132,7 +132,10 @@ private GeneralDao<Disease> disDao = new GeneralDao<>(Disease.class);
       public String createdog(){
         try{
      dogDao.create(dog);
-
+      dog.setDogId("");
+      dog.setDogDob("");
+      dog.setDogNames("");
+      dog.setDogId("");
      return "dogowner";
         }
 
@@ -185,8 +188,8 @@ private GeneralDao<Disease> disDao = new GeneralDao<>(Disease.class);
      }
       
       
-      public String deletedog(Dog dog){
-          dogDao.delete(dog);
+      public String deletedog(Dog dg){
+          dogDao.delete(dg);
       return "dogowner";
       }
       
