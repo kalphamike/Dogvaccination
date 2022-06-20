@@ -106,11 +106,11 @@ private GeneralDao<Disease> disDao = new GeneralDao<>(Disease.class);
         try{
      disDao.create(dis);
 
-     return "Dog";
+     return "vet";
         }
 
         catch (Exception e){
-            return "Disease";
+            return "vet";
 
         }
 
@@ -133,11 +133,11 @@ private GeneralDao<Disease> disDao = new GeneralDao<>(Disease.class);
         try{
      dogDao.create(dog);
 
-     return "Dog";
+     return "dogowner";
         }
 
         catch (Exception e){
-            return "Home";
+            return "dogowner";
 
         }
 
@@ -156,6 +156,7 @@ private GeneralDao<Disease> disDao = new GeneralDao<>(Disease.class);
         }
 
      }
+       
       public String Updatevaccine(){
         try{
      vacDao.update(vac);
@@ -173,19 +174,23 @@ private GeneralDao<Disease> disDao = new GeneralDao<>(Disease.class);
         try{
      dogDao.update(dog);
 
-     return "Dog";
+     return "dogowner";
         }
 
         catch (Exception e){
-            return "Home";
+            return "dogowner";
 
         }
 
      }
+      
+      
       public String deletedog(Dog dog){
           dogDao.delete(dog);
-      return "Dog";
+      return "dogowner";
       }
+      
+      
        public String deletevaccine(Vaccination vac){
           vacDao.delete(vac);
       return "Vaccination";

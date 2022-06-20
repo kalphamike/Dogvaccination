@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+       <title>CodePen - Dashboard UI</title>
+  
+  <link href="https://assets.codepen.io/344846/style.css" rel="stylesheet"/>
+
+ 
+    </h:head>
+    <h:body>
+        
+       
+        
+        
+<div class="grid-container">
+  
+  
+  <div class="item3">
+  
+            <f:view>
+              <h:form>
+                       <h1><h:outputText value="List"/></h1>
+                       <h:dataTable value="#{Main.dogDao}" var="item" >
+                           <h:column  >
+                               <f:facet name="header"  >
+                                   <h:outputText value="DogId"  />
+                               </f:facet>
+                               <h:outputText value="#{item.dogId}" />
+                           </h:column>
+                           <h:column>
+                               <f:facet name="header">
+                                   <h:outputText value="DogNames" />
+                               </f:facet>
+                               <h:outputText value="#{item.dogNames}"/>
+                           </h:column>
+                           <h:column>
+                               <f:facet name="header">
+                                   <h:outputText value="DogDob" />
+                               </f:facet>
+                               <h:outputText value="#{item.dogDob}"/>
+                           </h:column>
+                           <h:column>
+                               <f:facet name="header">
+                                   <h:outputText value="Regdog" />
+                               </f:facet>
+                               <h:outputText value="#{item.regdog}"/>
+                           </h:column>
+                           
+                            <h:column>
+                               <f:facet name="header">
+                                   <h:outputText value="Action"/>
+                               </f:facet>
+                               <h:outputText value="#{item.regdog}"/>
+                           </h:column>
+                       </h:dataTable>
+                       
+                   </h:form>
+               </f:view>
+
+  
+  </div>  
+  <div class="item4">
+            
+      
+      </div>
+  <div class="item5">Footer</div>
+</div>
+
+        
+   
+    </h:body>
+</html>
+

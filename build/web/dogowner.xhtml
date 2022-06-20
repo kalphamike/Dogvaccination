@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>dash</title>
            <!-- slider stylesheet -->
@@ -25,13 +26,45 @@
             }
             
         </style>
+        
+         <style>
+.item1 { grid-area: header; }
+.item2 { grid-area: menu; }
+.item3 { grid-area: main; }
+.item4 { grid-area: right; }
+.item5 { grid-area: footer; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header'
+    'menu main main main right right'
+    'menu footer footer footer footer footer';
+  gap: 10px;
+  background-color: #fddfd7;
+  padding: 10px;
+  
+}
+
+.grid-container > div {
+  background-color: whitesmoke;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+  border-width: 1px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 7px grey;
+   
+}
+</style>
+        
     </h:head>
      <h:body>
      <header >
      <div class="area"></div><nav class="main-menu">
             <ul>
                 <li>
-                    <a href="http://justinfarrow.com">
+                    <a href="dogowner.xhtml">
                         <i class="fa fa-home fa-2x"></i>
                         <span class="nav-text">
                             Dashboard
@@ -40,33 +73,33 @@
                   
                 </li>
                 <li class="has-subnav">
-                    <a href="http://justinfarrow.com">
+                    <a href="Home.xhtml">
                         <i class="fa fa-laptop fa-2x"></i>
                         <span class="nav-text">
-                            Stars Components
+                            Home
                         </span>
                     </a>
                     
                 </li>
-                <li class="has-subnav">
-                    <a href="#">
+               <li class="has-subnav">
+                    <a href="contacts.xhtml">
                        <i class="fa fa-list fa-2x"></i>
                         <span class="nav-text">
-                            Forms
+                            contact us
                         </span>
                     </a>
                     
                 </li>
                 <li class="has-subnav">
-                    <a href="#">
+                    <a href="check.xhtml">
                        <i class="fa fa-folder-open fa-2x"></i>
                         <span class="nav-text">
-                            Pages
+                            Symptom Checker
                         </span>
                     </a>
                    
                 </li>
-                <li>
+                <!-- <li>
                     <a href="#">
                         <i class="fa fa-bar-chart-o fa-2x"></i>
                         <span class="nav-text">
@@ -105,7 +138,7 @@
                             Documentation
                         </span>
                     </a>
-                </li>
+                </li>-->
             </ul>
 
             <ul class="logout">
@@ -121,13 +154,64 @@
         </nav>
    </header> 
     
-   
-         <div class="bdy">
-             
+   <div class="grid-container">
+  
+  
+  <div class="item3">
+  
+            <f:view>
+              <h:form>
+                       <h1><h:outputText value="List"/></h1>
+                       <h:dataTable value="#{Main.dogDao}" var="item" >
+                           <h:column  >
+                               <f:facet name="header"  >
+                                   <h:outputText value="DogId"  />
+                               </f:facet>
+                               <h:outputText value="#{item.dogId}" />
+                           </h:column>
+                           <h:column>
+                               <f:facet name="header">
+                                   <h:outputText value="DogNames" />
+                               </f:facet>
+                               <h:outputText value="#{item.dogNames}"/>
+                           </h:column>
+                           <h:column>
+                               <f:facet name="header">
+                                   <h:outputText value="DogDob" />
+                               </f:facet>
+                               <h:outputText value="#{item.dogDob}"/>
+                           </h:column>
+                           <h:column>
+                               <f:facet name="header">
+                                   <h:outputText value="Regdog" />
+                               </f:facet>
+                               <h:outputText value="#{item.regdog}"/>
+                           </h:column>
+                           
+                            <h:column>
+                               <f:facet name="header">
+                                   <h:outputText value="Action"/>
+                               </f:facet>
+                                <h:form>
+                                    <h:commandButton value="Remove Dog" action="#{Main.deletedog(dog)}"/>
+                                    
+                                </h:form>
+                           </h:column>
+                       </h:dataTable>
+                       
+                   </h:form>
+               </f:view>
+
+  
+  </div>  
+  <div class="item4">
             
-             
-         </div>
-        
+      
+      </div>
+  <div class="item5">Footer</div>
+</div>
+
+     
         
         
     </h:body>
